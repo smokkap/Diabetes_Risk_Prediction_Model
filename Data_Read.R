@@ -47,7 +47,7 @@ Merged_Df_diab$RACE = as.numeric(Merged_Df_diab$RACE)
 Merged_Df_diab$PATIENT_SK = as.numeric(Merged_Df_diab$PATIENT_SK)
 Merged_Df_diab$GENDER = as.numeric(Merged_Df_diab$GENDER)
 Merged_Df_diab=na.replace(Merged_Df_diab,'0')
-
+write.csv(Merged_Df_diab, file = "Diabetes_Data.csv", row.names = FALSE)
 #PCA
 pcamodel_reduc = princomp(Merged_Df_diab,cor=TRUE)		#save PCA model with loadings
 pcamodel_reduc$sdev^2 
