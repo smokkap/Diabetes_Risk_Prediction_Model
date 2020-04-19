@@ -142,6 +142,6 @@ for (i in sk){
   #break
 }
 write.csv(Final_Data_Frame_Control, file = "Final_Control.csv", row.names = FALSE)
-
+Final_Read = read.table("Final_Control.csv",sep = ",", fill = TRUE , header = TRUE)
 
 
