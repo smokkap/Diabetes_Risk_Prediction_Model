@@ -35,6 +35,12 @@ Control_Observations['Diabetes_Active'] = 0
 # Write to CSV Cleaned DF
 write.csv(Control_Observations, file = "Final_Control_Cleaned.csv", row.names = FALSE)
 
+#Consolidated_DF
+Total_Data = rbind(Case_Observations,Control_Observations)
+# Total Consolidations
+write.csv(Total_Data, file = "Total_Consolidated.csv", row.names = FALSE)
+
+
 unique(Control_Observations$Age)
 unique(Case_Observations$Age)
 
