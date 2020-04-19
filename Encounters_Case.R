@@ -50,7 +50,7 @@ i=NULL
 sk= as.character(unique(case_enct$PATIENT_SK))
 for (i in sk){
   temp_Data_Frame=data.frame()
-  #i=142293848
+  #i=105732746
   Patient_SK = i
   Alcohol_Habit = NULL
   Blood_Pressure =NULL
@@ -59,13 +59,13 @@ for (i in sk){
   Cholesterol =NULL
   Diabetes =NULL
   Race=NULL
-  Race=as.character(unique(case_enct[case_enct$PATIENT_SK == i,]$RACE[1]))
+  Race=as.vector(tail(case_enct[case_enct$PATIENT_SK == i,]$RACE,1))
   Patient_ID =NULL
   Patient_ID=as.character(unique(case_enct[case_enct$PATIENT_SK == i,]$PATIENT_ID))
   Age =NULL
   Age=max(case_enct[case_enct$PATIENT_SK == i,]$AGE_IN_YEARS)
   Gender =NULL
-  Gender = as.character(unique(case_enct[case_enct$PATIENT_SK == i,]$GENDER))
+  Gender = as.vector(tail(case_enct[case_enct$PATIENT_SK == i,]$GENDER,1))
   Diastolic_Mean =NULL
   Systolic_Mean =NULL
   Glucose_Mean = NULL
@@ -141,6 +141,9 @@ temp_Data_Frame= data.frame(Patient_ID,Patient_SK,Race,Gender,Age,Alcohol_Habit,
 Final_Data_Frame = rbind(temp_Data_Frame,Final_Data_Frame)
 #break
 }
+write.csv(Final_Data_Frame, file = "Final_Case.csv", row.names = FALSE)
 
+
+Final_Read = read.table("Final_Case.csv",sep = ",", fill = TRUE , header = TRUE)
 
 
